@@ -23,7 +23,8 @@ NEST 이니셔티브 관련 정보: <a href = "https://www.nest-initiative.org">
   * 윈도우 Powershell: $Env:[변수명]
   * 정상적으로 설치가 되었다면, 아무 파이썬이나 켜서 (버전 3.8 이상) 인터프리터 상에서 import nest를 했을 때 NEST 설명 document가 뜬다.
 
-3. 참조: <a href = "https://nest-simulator.readthedocs.io/en/stable/">NEST 튜토리얼 페이지</a>
+3. 참조 튜토리얼<br>
+<a href = "https://nest-simulator.readthedocs.io/en/stable/">NEST 튜토리얼 페이지</a><br>
 <a href = "https://nest-simulator.readthedocs.io/en/stable/examples/index.html#pynest-examples">PyNEST 예제 페이지</a>
 
 
