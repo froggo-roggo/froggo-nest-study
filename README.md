@@ -11,6 +11,7 @@ NEST 이니셔티브 관련 정보: <a href = "https://www.nest-initiative.org">
 1. <a href = "https://www.nest-simulator.org/download/">다운로드 링크</a>에서 환경에 맞는 버전의 nest를 다운로드 받는다.
 
 * git bash를 설치한 후 로컬 터미널에서 git clone https://github.com/nest/nest-simulator.git 커맨드로 쉽게 다운로드 받을 수 있다. (github에 올라온 것이 최신 버전인지 한 번 확인하고 다운)
+* 그냥 리눅스 환경에서 설치하는게 속 편하다. <a href="https://nest-simulator.readthedocs.io/en/stable/installation/user.html#user-install">참조</a>
 
 2. 참조: <a href = "https://nest-simulator.readthedocs.io/en/stable/">NEST 튜토리얼 페이지</a>
 
