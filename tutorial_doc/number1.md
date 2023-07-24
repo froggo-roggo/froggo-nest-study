@@ -7,6 +7,7 @@
 ### PyNEST - NEST 시뮬레이터 인터페이스
 
 <img src ="https://nest-simulator.readthedocs.io/en/stable/_images/python_interface.png">
+
 *Figure 1* 파이썬 인터페이스가 작동하는 방식. 파이썬 인터프리터가 nest 모듈을 인식하고 import하면, NEST Simulator kernel가 동적으로 로드된다. 사용자의 sim1ulation script에 쓰이는 function은 모두 이 high-level API에 정의되어 있으며 (즉, Python level), 이 함수들이 NEST의 기본 언어(시뮬레이션 언어)로 된 SLI code를 생성한 후 NEST simulation kernel을 제어한다.
 
 NEural Simulation Tool (www.nest-initiative.org)은 대규모 이형 뉴런 네트워크를 시뮬레이션 하기 위해 설계된 GPL 라이선스 오픈 소스 소프트웨어이다. 시뮬레이터는 Python에 대한 interface를 제공한다. Figure 1은 사용자의 simulation script와 NEST Simulator 간의 상호작용을 묘사하고 있다. 높은 시뮬레이션 성능을 위해, 시뮬레이션 커널은 C++로 작성되었다.
