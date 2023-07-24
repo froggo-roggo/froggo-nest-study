@@ -1,9 +1,10 @@
-# reference: https://nest-simulator.readthedocs.io/en/stable/ref_material/pynest_apis.html
-
 import nest
-import nest.voltage_trace
+import time
+import numpy as np
+import scipy.special as sp
 import matplotlib.pyplot as plt
 
+neurolist = []
 
 
 
