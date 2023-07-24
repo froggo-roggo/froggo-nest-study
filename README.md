@@ -9,11 +9,10 @@ NEST 이니셔티브 관련 정보: <a href = "https://www.nest-initiative.org">
 
 ### NEST 사용법
 * 수동 다운로드: <a href = "https://www.nest-simulator.org/download/">다운로드 링크</a>에서 환경에 맞는 버전의 nest를 다운로드 받는다.
-** git bash를 설치한 후 로컬 터미널에서 git clone https://github.com/nest/nest-simulator.git 커맨드로 쉽게 다운로드 받을 수 있다. (github에 올라온 것이 최신 버전인지 한 번 확인하고 다운)
-** 이론상 cmake CMakeLists.txt를 실행하면 사용 가능해야 한다... (그러나 실제로는 수많은 패키지 의존성 문제에 직면할 것)
+  * git bash를 설치한 후 로컬 터미널에서 git clone https://github.com/nest/nest-simulator.git 커맨드로 쉽게 다운로드 받을 수 있다. (github에 올라온 것이 최신 버전인지 한 번 확인하고 다운)
 
 * 리눅스 환경 설치: <a href="https://nest-simulator.readthedocs.io/en/stable/installation/user.html#user-install">참조</a>
-  * 따라서 리눅스를 쓰는 편이 이후의 과정에서 마음 편하다
+  * 리눅스를 쓰는 편이 이후의 과정에서 마음 편하다 (위 깃허브에서 다운받은 파일 중 윈도우 환경에서는 작동 안 하는 함수 있음)
   * windows에서 bash를 켜면 linux/unix에서와 똑같이 진행 가능
 
 2. 파이썬 API 사용 준비
