@@ -68,7 +68,7 @@ NEural Simulation Tool (www.nest-initiative.org)은 대규모 이형 뉴런 네�
 
 - 예를 들면, 푸아송 과정을 통해 모델링 된 두 종류의 연결 (흥분성 및 억제성)은 다음과 같이 모델링할 수 있다.
 
-''' python
+``` python
 neuron = nest.Create("iaf_psc_alpha")
 neuron.set(I_e = 0.0)
 multimeter = nest.Create("multimeter")
@@ -88,7 +88,7 @@ nest.Connect(noise_in, neuron, syn_spec=syn_dict_in)
 nest.Connect(multimeter, neuron)
 nest.Connect(neuron, spikerecorder)
 
-'''
+```
 
 [전체 코드](https://github.com/froggo-roggo/froggo-nest-study/blob/main/mysecondnestproject.py)
 
