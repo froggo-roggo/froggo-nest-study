@@ -67,6 +67,7 @@ NEural Simulation Tool (www.nest-initiative.org)은 대규모 이형 뉴런 네�
 - 실제 뉴런 및 시냅스 사이의 연결은 크게 '흥분성(excitatory)'과 '억제성(inhibitory)'의 두 종류로 나눌 수 있다. NEST에서는 이러한 연결들을 synapse 노드의 weight을 바꾸는 것으로 구현할 수 있다.
 
 - 예를 들면, 푸아송 과정을 통해 모델링 된 두 종류의 연결 (흥분성 및 억제성)은 다음과 같이 모델링할 수 있다.
+
 ''' python
 neuron = nest.Create("iaf_psc_alpha")
 neuron.set(I_e = 0.0)
