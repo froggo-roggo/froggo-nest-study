@@ -110,7 +110,7 @@
     - 반대로 outdegree는 presynaptic neuron에서 나오는 connection의 총 개수를 의미한다.
     - 대부분의 경우 (가능하다면) fixed_indegree를 설정하는 편이 더 효율적이다.
   - 한편 fixed_total_number connection은 pre와 post 군집에 있는 뉴런들을 무작위로 선택해 총 n개의 연결을 만든다.
-  - --세 개 차이가 구체적으로 뭔지는 공부 좀 더 해야겄다... 어차피 방향이 항상 pre → post면 결국 같지 않나???--
+  - ~~세 개 차이가 구체적으로 뭔지는 공부 좀 더 해야겄다... 어차피 방향이 항상 pre → post면 결국 같지 않나???~~
 
 
 
