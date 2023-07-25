@@ -46,4 +46,6 @@ conn_dict_in = {"rule": "fixed_indegree", "indegree": Ki}
 syn_dict_ex = {"delay": d, "weight": Je}
 syn_dict_in = {"delay": d, "weight": Ji}
 nest.Connect(epop1, ipop1, conn_dict_ex, syn_dict_ex)
+# note that the population number n of epops and ipops are different
+# therefore the number of all possible connection between the nodes is 100 * 30 = 3000
 nest.Connect(ipop1, epop1, conn_dict_in, syn_dict_in)

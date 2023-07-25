@@ -85,7 +85,7 @@
 
 #### 1. 결정론적 연결 (deterministic connection)
 - Connect(pre, post, conn_spec = None, syn_spec = None, return_synapsecollection = False) 함수는 세 번째 인자로 connectivity pattern을 지정하는 식별자를 받는다. 이 식별자는 string일 수도 있고 dictionary일 수도 있다.
-  - 만약 아무것도 지정되지 않았다면, 기본값은 "all_to_all"로, 두 노드(각각 n, m개의 요소를 가진다고 가정) 사이에 가능한 모든 연결(n*m개)을 만든다.
+  - 만약 아무것도 지정되지 않았다면, 기본값은 "all_to_all"로, 두 노드(각각 n, m개의 요소를 가진다고 가정) 사이에 가능한 모든 연결(n&#42;m개)을 만든다.
   - "one_to_one"으로 설정하면, 서로 크기가 n으로 같은 두 population에 대해, 순서대로 모든 요소들을 서로 짝지어서 n개의 연결이 생긴다.
   - multimeter 또한 비슷한 rule로 연결할 수 있다.
 
@@ -104,6 +104,8 @@
     syn_dict_ex = {"delay": d, "weight": Je}
     syn_dict_in = {"delay": d, "weight": Ji}
     nest.Connect(epop1, ipop1, conn_dict_ex, syn_dict_ex)
+    # note that the population number n of epops and ipops are different
+    # therefore the number of all possible connection between the nodes is 100 * 30 = 3000
     nest.Connect(ipop1, epop1, conn_dict_in, syn_dict_in)
     ```
     - 여기서 indegree는 postsynaptic neuron으로 향하는 conneciton의 총 개수를 의미한다. 즉, fixed_indegree는 randomized된 전체 connection 중에서도 postsynaptic neuron으로 향하는 conenction 수를 제한한다는 뜻이 된다.
@@ -112,7 +114,8 @@
   - 한편 fixed_total_number connection은 pre와 post 군집에 있는 뉴런들을 무작위로 선택해 총 n개의 연결을 만든다.
   - ~~세 개 차이가 구체적으로 뭔지는 공부 좀 더 해야겄다... 어차피 방향이 항상 pre → post면 결국 같지 않나???~~
 
-
+- pairwise_bernoulli 분포를 선택하면, 노드 사이에 가능한 모든 연결 중에서, 확률 p에 따라 몇몇 연결만을 선택한다.
+  - 참조: 베르누이 분포는 p의 확률로 1 이고 1-p의 확률로 0인 확률변수의 분포로, 가능한 모든 연결의 개수(n&#42;m)가 충분히 많을 때 실제로 작동하는 연결의 수는 
 
 
 
