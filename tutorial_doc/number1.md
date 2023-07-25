@@ -96,8 +96,22 @@ nest.Connect(neuron, spikerecorder)
 
 ### 두 개의 연결된 뉴런
 - 두 뉴런을 연결할 때도 Connect 함수를 쓰면 된다.
-  - 예 ```python
+  - 예
+  ```python
   import nest
+  neuron1 = nest.Create("iaf_psc_alpha")
+  neuron1.set(I_e=376.0)
+  neuron2 = nest.Create("iaf_psc_alpha")
+  multimeter = nest.Create("multimeter")
+  multimeter.set(record_from=["V_m"])
+  
+  nest.Connect(neuron1, neuron2, syn_spec = {"weight":20.0}) # 20의 weight로 연결한다는 뜻이 된다.
+  nest.Connect(multimeter, neuron2)
   ```
+  - 만약 뉴런 사이의 weight 이외에도 delay를 설정하고 싶다면,
+  ```python
+  nest.Connect(neuron1, neuron2, syn_spec={"weight":20.0, "delay":1.0})
+  ```
+  와 같이 사용하면 된다.
 
 ### 커맨드 정리
