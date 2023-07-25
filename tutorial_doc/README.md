@@ -1,3 +1,7 @@
+[각종 약어, 용어 및 기본 단위](https://nest-simulator.readthedocs.io/en/stable/ref_material/glossary.html)
+
+
+
 [Tutorial part 1: neurons and simple neural networks](https://nest-simulator.readthedocs.io/en/stable/tutorials/pynest_tutorial/part_1_neurons_and_simple_neural_networks.html#pynest-tutorial-1)
 
 └[요약](https://github.com/froggo-roggo/froggo-nest-study/blob/main/tutorial_doc/number1.md)

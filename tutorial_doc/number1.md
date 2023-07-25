@@ -124,7 +124,7 @@ nest.Connect(neuron, spikerecorder)
   - Connect(pre, post, conn_spec = None, syn_spec = None, return_synapsecollection = False)
     - pre: *NodeCollection*
     - post: *NodeCollection*
-    - conn_spec: *dictionary*
+    - conn_spec: *string* or *dictionary*
     - syn_spec: *dictionary*
     - return_synapsecollection: *boolean*
   - 연결도(connectivity) 세팅: 연결도는 conenctivity rule의 이름(*string* type) 또는 rule의 이름과 rule-specific parameter로 구성된 *dictionary*로 지정할 수 있다.
