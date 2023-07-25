@@ -10,6 +10,9 @@ neuronpop2 = nest.Create("iaf_psc_alpha", 100)
 neuronpop3 = nest.Create("iaf_psc_alpha", 100)
 '''
 ### 1. Creation setting
+noise = nest.Create("poisson_generator", 2)
+noise[0].rate = 80000.0
+noise[1].rate = 15000.0
 
 edict = {"I_e": 500.0} # Parameter default value dictionary setting
 nest.CopyModel("iaf_psc_alpha", "exc_iaf_psc_alpha") # "exc_iaf_psc_alpha" is a new customized model forked from iaf_psc_alpha, a predefined, built-in model in NEST.
@@ -50,6 +53,7 @@ nest.Connect(epop1, epop2, conn_dict_ex, syn_dict_ex)
 nest.Connect(ipop2, epop2, conn_dict_in, syn_dict_in)
 nest.Connect(ipop1, epop2, conn_dict_in, syn_dict_in)
 
+nest.Connect(noise, epop2, syn_spec={"weight": nest.random.uniform(-1.0, 1.0), "delay": 1.0})
 
 ### 3. Device setting
 #pg = nest.Create("poisson_generator")
@@ -92,7 +96,7 @@ for j in range(0, garo*sero):
     plt.title("Epop 2 node "+str(j+1))
     if(j == round((garo*sero)/2)-1): plt.ylabel("Membrane Potential (mV)")
     
-
+plt.suptitle('Simulation with poisson noise')
 plt.tight_layout()
 plt.show()
 plt.savefig('onetoten_epop_4.png')
@@ -107,6 +111,7 @@ for k in range(0, multinum):
     #if(j == round((garo*sero)/2)-1): plt.ylabel("Membrane Potential (mV)")
     plt.ylabel("Membrane Potential (mV)")
 
+plt.suptitle('Simulation with poisson noise')
 plt.tight_layout()
 plt.show()
 plt.savefig('all_epop_4.png')
