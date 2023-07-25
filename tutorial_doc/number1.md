@@ -132,6 +132,7 @@ nest.Connect(neuron, spikerecorder)
     - 예 2) {"rule": "fixed_indegree", "indegree": 20}
   - 시냅스(synapse) 세팅: 시냅스 또한 synapse model의 이름(*string* type)으로 지정할 수 있다.
     - nest.synapse_models를 실행하면 사용 가능한 모든 model의 이름을 확인할 수 있다.
+      - <img src = "https://github.com/froggo-roggo/froggo-nest-study/blob/main/tutorial_doc/availablesynapsemodels.png">
     - 아무것도 입력하지 않으면, 기본값으로 "static_synapse"가 지정된다.
     - synapse dictionary에는 다음과 같은 key가 존재한다.
       - "synapse_model": NEST에 의해 predeifned되었거나, 사용자가 직접 CopyModel()로 지정한 시냅스 타입
