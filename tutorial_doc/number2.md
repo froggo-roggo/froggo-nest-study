@@ -107,6 +107,8 @@
     # note that the population number n of epops and ipops are different
     # therefore the number of all possible connection between the nodes is 100 * 30 = 3000
     nest.Connect(ipop1, epop1, conn_dict_in, syn_dict_in)
+    # epop1 and ipop1 are being pre and post to each other simultaneously.
+    # this is legitimate for every conenctivity rule in NEST.
     ```
     - 여기서 indegree는 postsynaptic neuron으로 향하는 conneciton의 총 개수를 의미한다. 즉, fixed_indegree는 randomized된 전체 connection 중에서도 postsynaptic neuron으로 향하는 conenction 수를 제한한다는 뜻이 된다.
     - 반대로 outdegree는 presynaptic neuron에서 나오는 connection의 총 개수를 의미한다.
@@ -115,17 +117,45 @@
   - ~~세 개 차이가 구체적으로 뭔지는 공부 좀 더 해야겄다... 어차피 방향이 항상 pre → post면 결국 같지 않나???~~
 
 - pairwise_bernoulli 분포를 선택하면, 노드 사이에 가능한 모든 연결 중에서, 확률 p에 따라 몇몇 연결만을 선택한다.
-  - 참조: 베르누이 분포는 p의 확률로 1 이고 1-p의 확률로 0인 확률변수의 분포로, 가능한 모든 연결의 개수(n&#42;m)가 충분히 많을 때 실제로 작동하는 연결의 수는 
+  - 참조: 베르누이 분포는 p의 확률로 1 이고 1-p의 확률로 0인 확률변수의 분포로, 가능한 모든 연결의 개수(n&#42;m)가 충분히 많을 때 실제로 작동하는 연결의 수의 기댓값은 n&#42;m&#42;p개이다.
+
+- conn_spec의 인자로 connectivity pattern을 지정하는 것 이외에도 self-connection이나 두 뉴런 간 중복 연결에 대한 설정을 바꿀 수 있다.
+  - 식별자 dictionary에서, key "allow_autapses"(자기 연결)와 "allow_multapses"(중복 연결)에 대해 value로 False 혹은 True의 boolean value를 지정하면 된다.
+
+- 마지막으로, 모든 connectivity rule에 대해 한 군집 노드가 pre와 post의 역할을 동시에 수행하는 것이 가능하다.
 
 
 
+### Device의 행동 지정하기
+- 모든 device는 기본적인 timing capacity를 가지고 있다.
+  - 모든 시각은 origin(기본값 0)에 대해 상대적이다.
+  - start (기본값 0)은 device가 행동을 시작하는 시각을 정의한다.
+  - stop (기본값 ∞, 즉 시뮬레이션이 끝날 때까지)은 device가 행동을 끝내는 시각을 정의한다.
+  - 예: 100 ms부터 150 ms까지만 작동하는 [포아송 생성기](https://nest-simulator.readthedocs.io/en/stable/models/poisson_generator.html)
+    ```python
+    pg = nest.Create("poisson_generator")
+    pg.set({"start": 100.0, "stop": 150.0})
+    ```
+- 또한, 측정 device가 내놓는 result에 포함된 값 중 "events"를 추출하여 파일에 저장할 수 있다.
+  - 측정이 길고 측정 대산 노드의 규모가 클수록, 파일에 따로 저장하는 편이 좋다.
+  - 모든 측정 device는 data를 어디에 어떤 형식으로 저장할지에 대한 파라미터(record_to)를 받을 수 있다.
+    - "ascii"는 측정 데이터를 파일로 dump한다.
+    - "screen"은 측정 데이터를 화면에 띄운다.
+    - "memory"는 측정 데이터를 메모리에 hold한다. (모든 측정 device에서 기본값)
+  - 또한 이 데이터에 대한 label을 지정할 수 있는데, 따로 지정하지 않는다면 NEST에 의해 생성되는 기본값은 device id이다.
+    - 만약 simulation이 다중 스레드 및 프로세스에서 진행되고 있다면, 각각의 스레드와 프로세스에 대해 파일이 하나씩 생성된다.
+  - [측정 device에 대한 더 많은 내용은 이곳을 참조](https://nest-simulator.readthedocs.io/en/stable/devices/record_from_simulations.html#record-simulations)
+
+
+여기까지 [전체 코드](https://github.com/froggo-roggo/froggo-nest-study/blob/main/neuronpopulation/populationsetting.py)
+
+
+### 시뮬레이션 reset하기
+- 만족할 만한 결과를 얻을 때까지 시뮬레이션을 반복해야 하는 경우, ResetKernel() 함수를 사용하면 한 프로세스 내에서 만든 모든 node와 customized model을 제거하고, internal clock을 0으로 초기화한다.
+- 서로 다른 parameter setting으로 같은 simulation을 여러 번 반복할 때는, 모든 것을 reset할 필요 없이 그냥 반복문을 사용하고 반복마다 parameter setting만 update되도록 하는 것으로도 충분하다.
 
 
 
+### Command overview
 
 
-
-
-
-
-- 여기까지 [전체 코드](https://github.com/froggo-roggo/froggo-nest-study/blob/main/neuronpopulation/populationsetting.py)
