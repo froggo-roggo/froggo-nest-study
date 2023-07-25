@@ -95,5 +95,9 @@ nest.Connect(neuron, spikerecorder)
 <img src = "https://github.com/froggo-roggo/froggo-nest-study/blob/main/exinsimresult.png">
 
 ### 두 개의 연결된 뉴런
+- 두 뉴런을 연결할 때도 Connect 함수를 쓰면 된다.
+  - 예 ```python
+  import nest
+  ```
 
 ### 커맨드 정리
