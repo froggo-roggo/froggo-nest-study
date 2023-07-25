@@ -115,3 +115,33 @@ nest.Connect(neuron, spikerecorder)
   와 같이 사용하면 된다.
 
 ### 커맨드 정리
+- 노드 커맨드
+  - Create(model: *string*, n=1: *integer*, params=None: *dictionary* or *dictionary list*)
+  - get(&#42;params: *string* or *string list*, 	&#42;&#42;kwargs)
+  - set(params=None: *dictionary* or *dictionary list*, &#42;&#42;kwargs)
+
+- 연결 커맨드
+  - Connect(pre, post, conn_spec = None, syn_spec = None, return_synapsecollection = False)
+    - pre: *NodeCollection*
+    - post: *NodeCollection*
+    - conn_spec: *dictionary*
+    - syn_spec: *dictionary*
+    - return_synapsecollection: *boolean*
+  - 연결도(connectivity) 세팅: 연결도는 conenctivity rule의 이름(*string* type) 또는 rule의 이름과 rule-specific parameter로 구성된 *dictionary*로 지정할 수 있다.
+    - 예 1) "all_to_all"
+    - 예 2) {"rule": "fixed_indegree", "indegree": 20}
+  - 시냅스(synapse) 세팅: 시냅스 또한 synapse model의 이름(*string* type)으로 지정할 수 있다.
+    - nest.synapse_models를 실행하면 사용 가능한 모든 model의 이름을 확인할 수 있다.
+    - 아무것도 입력하지 않으면, 기본값으로 "static_synapse"가 지정된다.
+    - synapse dictionary에는 다음과 같은 key가 존재한다.
+      - "synapse_model": NEST에 의해 predeifned되었거나, 사용자가 직접 CopyModel()로 지정한 시냅스 타입
+      - "weight": *double*
+      - "delay": *double*
+      - "receptor_type": *integer*
+      - 이외에 선택된 시냅스 모델에 대한 특수한 파라미터
+      - 위 파라미터는 모두 optional이며 지정되지 않을 경우 현재 시냅스 모델에 대한 기본값이 적용된다.
+      - 이름을 제외한 파라미터에는 scalar뿐만 아니라 distribution이 들어갈 수도 있는데, 이 distribution은 distribution-specific 파라미터 (예: 평균(mean)이나 표준편차(std))로 정의된다.
+
+- 시뮬레이션 커맨드
+  - Simulate(t: *double*)
+    - t (ms, milisecond)동안 시뮬레이션을 진행한다.
