@@ -1,0 +1,1 @@
+Neuron population with random parameter setting & random activity being designed to mimic real neural activity (hopefully, now just trying)
