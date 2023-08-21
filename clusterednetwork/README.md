@@ -1,0 +1,3 @@
+### Clustered Network simulation
+
+Spatially structured network를 이용해서 간단한 clustered network를 구현하고 싶었다...
